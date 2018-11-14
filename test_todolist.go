@@ -11,7 +11,7 @@ type todolistService struct {
 
 //a function to check if a string exist in an array of string
 func stringInSlice(a string, arr []string) bool {
-    for _, b := range list {
+    for _, b := range arr {
         if b == a {
             return true
         }
