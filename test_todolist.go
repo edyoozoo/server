@@ -9,6 +9,16 @@ type todolistService struct {
 	items []*todolistsvr.Todo
 }
 
+//a function to check if a string exist in an array of string
+func stringInSlice(a string, arr []string) bool {
+    for _, b := range list {
+        if b == a {
+            return true
+        }
+    }
+    return false
+}
+
 func (s *todolistService) Add(c echo.Context, req *todolistsvr.AddReq) (resp *todolistsvr.AddResp, bizError *todolistsvr.AddError, err error) {
 	if len(s.items) > 4 {
 		bizError = new(todolistsvr.AddError)
@@ -25,7 +35,7 @@ func (s *todolistService) Add(c echo.Context, req *todolistsvr.AddReq) (resp *to
 			bizError.Error = req.Item.Title+" already exist"
 			return
         }
-    }
+	}
 
 	if req.Item == nil {
 		e := new(todolistsvr.CommonError)
