@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/labstack/echo"
 	"server/searchsvr"
+
+	"github.com/labstack/echo"
 )
 
 type searchService struct{}

@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/labstack/echo"
 	"server/todolistsvr"
+
+	"github.com/labstack/echo"
 )
 
 type todolistService struct {
@@ -11,12 +12,12 @@ type todolistService struct {
 
 //a function to check if a string exist in an array of string
 func stringInSlice(a string, arr []string) bool {
-    for _, b := range arr {
-        if b == a {
-            return true
-        }
-    }
-    return false
+	for _, b := range arr {
+		if b == a {
+			return true
+		}
+	}
+	return false
 }
 
 func (s *todolistService) Add(c echo.Context, req *todolistsvr.AddReq) (resp *todolistsvr.AddResp, bizError *todolistsvr.AddError, err error) {
@@ -29,12 +30,12 @@ func (s *todolistService) Add(c echo.Context, req *todolistsvr.AddReq) (resp *to
 
 	//unique check
 	for _, b := range s.items {
-        if b.Title == req.Item.Title {
-            bizError = new(todolistsvr.AddError)
+		if b.Title == req.Item.Title {
+			bizError = new(todolistsvr.AddError)
 			bizError.Req = req
-			bizError.Error = req.Item.Title+" already exist"
+			bizError.Error = req.Item.Title + " already exist"
 			return
-        }
+		}
 	}
 
 	if req.Item == nil {
