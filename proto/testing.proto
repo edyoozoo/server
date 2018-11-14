@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package testProto;
+
+import "common.proto";
+
+option go_package = "searchsvr";
+
+message SearchReq {
+  int32 userId = 1;
+}
+
+message SearchResponse {
+  int32 userId = 1;
+  int32 id = 2;
+  string title = 3;
+  bool completed = 4;
+}
+
+message SearchError {
+  SearchReq req = 1;
+  string error = 2;
+}
+
+service SearchService {
+  rpc serach(SearchReq) returns (SearchResponse) {
+    option (error) = "SearchError";
+  }
+}
